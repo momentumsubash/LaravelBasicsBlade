@@ -161,6 +161,45 @@ Route::get('about-page',function (){
     return view('other.about');
 })->name('other.about');
 
+
+// for stripe
+Route::get('payment',[
+        'uses'=>'PaymentController@loadForm'
+        ]);
+
+Route::post('requestPayment',[
+        'uses'=>'PaymentController@setUpPayment'
+        ]);
+
+// for paypal
+Route::get('order',[
+        'uses'=>'PayPalController@form'
+        ]);
+Route::post('checkout',[
+        'uses'=>'PayPalController@checkout'
+        ]);
+Route::post('/checkout/{order}',[
+        'uses'=>'PayPalController@checkout'
+        ]);
+
+Route::get('/paypal/checkout/cancelled', [
+    'name' => 'PayPal Express Checkout',
+    'as' => 'paypal.checkout.cancelled',
+    'uses' => 'PayPalController@cancelled',
+]);
+Route::get('/paypal/checkout/completed', [
+    'name' => 'PayPal Express completed',
+    'as' => 'paypal.checkout.completed',
+    'uses' => 'PayPalController@completed',
+]);
+
+Route::post('/webhook/paypal/{order?}/{env?}', [
+    'name' => 'PayPal Express IPN',
+    'as' => 'webhook.paypal.ipn',
+    'uses' => 'PayPalController@webhook',
+]);
+
+
 Route::group(['prefix' => 'admin'],function (){
 
     Route::get('',[
@@ -184,5 +223,8 @@ Route::group(['prefix' => 'admin'],function (){
         'uses'=>'PostController@postAdminUpdate',
         'as'=>'admin.update'
     ]);
+
+     
+   
 
 });
