@@ -7,9 +7,17 @@ use Illuminate\Http\Request;
 use Illuminate\Session\Store;
 
 
+
 class PostController extends Controller
 {
     //
+
+
+        public function __construct()
+{   
+
+    // $this->middleware('admin');
+}
     public function getIndex(Store $session){
 
        

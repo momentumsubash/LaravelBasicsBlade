@@ -147,12 +147,13 @@
 //    return "it works !";
 //})->name('admin.update');
 
-
-
-Route::get('/', [
+Auth::routes(); 
+ Route::get('/', [
     'uses'=>'PostController@getIndex',
     'as'=>'blog.index'
 ]);
+Route::group(['middleware' => ['auth']],function (){
+   
 Route::get('post/{id}', [
     'uses'=>'PostController@getPost',
     'as'=>'blog.post'
@@ -199,8 +200,18 @@ Route::post('/webhook/paypal/{order?}/{env?}', [
     'uses' => 'PayPalController@webhook',
 ]);
 
+Route::get('/changePassword','HomeController@showChangePasswordForm');
+Route::post('/changePassword','HomeController@changePassword')->name('changePassword');
 
-Route::group(['prefix' => 'admin'],function (){
+    });
+
+Route::get('admin', ['middleware' => 'admin', function () {  
+    //
+}]);
+
+
+
+Route::group(['prefix' => 'admin','middleware' => ['admin']],function (){
 
     Route::get('',[
         'uses'=>'PostController@getAdminIndex',
@@ -228,3 +239,7 @@ Route::group(['prefix' => 'admin'],function (){
    
 
 });
+
+
+// Route::get('/home', 'PostController@getAdminIndex')->name('dashboard');
+

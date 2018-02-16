@@ -22,6 +22,14 @@
             {{--above for learning--}}
 
             <p class="quote">Laravel is beutyful</p>
+
+      @if(Session::has('msg')))      
+<div class="alert alert-danger">
+  {{ Session::get('msg')}}
+</div>
+@endif
+
+
         </div>
     </div>
 
