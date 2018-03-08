@@ -235,10 +235,16 @@ Route::group(['prefix' => 'admin','middleware' => ['admin']],function (){
         'as'=>'admin.update'
     ]);
 
+
+
+
      
    
 
 });
+    Route::get('importExport', 'FileController@importExport');
+Route::get('downloadExcel/{type}', 'FileController@downloadExcel');
+Route::post('importExcel', 'FileController@importExcel');
 
 
 // Route::get('/home', 'PostController@getAdminIndex')->name('dashboard');
