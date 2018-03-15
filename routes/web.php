@@ -235,6 +235,11 @@ Route::group(['prefix' => 'admin','middleware' => ['admin']],function (){
         'as'=>'admin.update'
     ]);
 
+    Route::get('sendemail',[
+        'uses'=>'EmailController@send_email',
+        'as'=>'admin.sendemail'
+    ]);
+
 
 
 

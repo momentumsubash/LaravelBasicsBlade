@@ -5,12 +5,13 @@
         <div class="col-md-12">
             <p class="alert alert-info">{{ Session::get('info')}}</p>
         </div>
-
+        
     </div>
     @endif
     <div class="row">
         <div class="col-md-12">
             <a href="{{route('admin.create')}}" class="btn btn-success">new Post</a>
+            <a href="{{route('admin.sendemail')}}" class="btn btn-success">Send Test Email</a>
         </div>
     </div>
     <hr>
@@ -21,6 +22,4 @@
         </div>
     </div>
     @endforeach
-
-
     @endsection
