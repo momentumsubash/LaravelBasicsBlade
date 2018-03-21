@@ -6,9 +6,11 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "barryvdh/laravel-dompdf": "^0.8.2",
         "basuregami/UserModule": "dev-master",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
+        "league/flysystem-aws-s3-v3": "^1.0",
         "maatwebsite/excel": "^2.1",
         "omnipay/paypal": "~2.0",
         "omnipay/stripe": "~2.0",

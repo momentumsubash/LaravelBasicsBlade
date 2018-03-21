@@ -250,6 +250,10 @@ Route::group(['prefix' => 'admin','middleware' => ['admin']],function (){
     Route::get('importExport', 'FileController@importExport');
 Route::get('downloadExcel/{type}', 'FileController@downloadExcel');
 Route::post('importExcel', 'FileController@importExcel');
+Route::get('renderpdf', 'PdfController@render_pdf');
+Route::get('get_pdf', 'PdfController@get_pdf');
+
+
 
 
 // Route::get('/home', 'PostController@getAdminIndex')->name('dashboard');
