@@ -64,9 +64,9 @@ class PdfController extends Controller
 		// $file=Storage::disk('local')->download('pdf/a.pdf','.pdf');
 		// $file=Storage::get('pdf/a.pdf','.pdf');
 
-		$exists = Storage::disk('s3')->exists('docs/Pradeep Acharya201803.pdf');
+		$exists = Storage::disk('s3')->exists('pdf/201804.pdf');
 		if($exists){
-					$assetPath =Storage::disk('s3')->temporaryUrl('docs/Pradeep Acharya201803.pdf',Carbon::now()->addMinutes(5));
+					$assetPath =Storage::disk('s3')->temporaryUrl('pdf/201804.pdf',Carbon::now()->addMinutes(5));
 			$filename = basename($assetPath);
 
         // return file_put_contents($filename,file_get_contents($assetPath));

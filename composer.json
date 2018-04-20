@@ -14,7 +14,12 @@
         "maatwebsite/excel": "^2.1",
         "omnipay/paypal": "~2.0",
         "omnipay/stripe": "~2.0",
-        "symfony/event-dispatcher": "^2.8"
+        "stripe/stripe-php": "2.*",
+        "symfony/event-dispatcher": "^2.8",
+        "vinelab/cdn": "*",
+        "yajra/laravel-datatables-buttons": "^3.0",
+        "yajra/laravel-datatables-html": "^3.1",
+        "yajra/laravel-datatables-oracle": "~8.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

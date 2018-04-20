@@ -15,9 +15,32 @@ class PaymentController extends Controller
     
     public function loadForm()
     {
-         return View::make('pages.stripe', [
-                'users' => ''
-            ]);
+        $invoice_amount = 20000; // $200.00
+
+\Stripe\Stripe::setApiKey(\Illuminate\Support\Facades\Config::get('services.stripe.secret'));
+$invoice_item = \Stripe\InvoiceItem::create([
+  'customer' => $user->stripe_id,
+  'amount' => $invoice_amount,
+  'currency' => 'usd',
+  'description' => 'Test Charge'
+]);
+
+$invoice = \Stripe\Invoice::create([
+  'customer' => $user->stripe_id
+]);
+
+$invoice = \Stripe\Invoice::retrieve($invoice->id);
+$charge = $invoice->pay();
+
+if ($charge) {
+  return 'you done it!';
+}
+else {
+  return 'ah hell something went wrong';
+}
+         // return View::make('pages.stripe', [
+         //        'users' => ''
+         //    ]);
     }
 
      public function loadPayForm()

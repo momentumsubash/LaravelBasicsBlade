@@ -247,11 +247,26 @@ Route::group(['prefix' => 'admin','middleware' => ['admin']],function (){
    
 
 });
-    Route::get('importExport', 'FileController@importExport');
+Route::get('importExport', 'FileController@importExport');
 Route::get('downloadExcel/{type}', 'FileController@downloadExcel');
 Route::post('importExcel', 'FileController@importExcel');
 Route::get('renderpdf', 'PdfController@render_pdf');
 Route::get('get_pdf', 'PdfController@get_pdf');
+Route::get('datatable','DatatablesController@index');
+Route::get('getuser',[
+        'uses'=>'DatatablesController@anyData',
+        'as'=>'get.user'
+    ]);
+// Route::post('getuser',[
+//         'uses'=>'DatatablesController@anyData',
+//         'as'=>'get.user'
+//     ]);
+Route::post('datatable/getdata','DatatablesController@index')->name('datatable/getdata');
+// Route::get('getuser','DatatablesController@anyData');
+
+
+
+
 
 
 

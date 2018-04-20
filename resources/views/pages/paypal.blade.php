@@ -60,6 +60,7 @@
     data-locale="auto"
     data-panel-label="Pay your Bill"
     data-label="Click Here to Pay Bill"
+    data-receipt_email='suacharya@olivemedia.co'
     data-zip-code="true">
 
   </script>
