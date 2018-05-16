@@ -2,7 +2,8 @@
 
 
 @section('style')
-<link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
+
+
 @endsection
 
 @section('content')
@@ -13,7 +14,7 @@
                 <div class="panel-heading">Data Table Demo</div>
 
                 <div class="panel-body">
-                    <table class="table table-hover table-bordered table-striped datatable" style="width:100%">
+                    <table class="table table-hover table-bordered table-striped datatable" id="users-table" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -30,6 +31,26 @@
 
 @endsection
 
-<!-- @section('script')
-
-@endsection -->
+@section('script')
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
+<script type="text/javascript">
+ $(document).ready(function() {
+    $('#users-table').dataTable( {
+        "processing": true,
+        "serverSide": true,
+        "ajax": {
+            "url": "datatable/getdata",
+            "type": "POST",
+            "data": {_token: "{{csrf_token()}}"}
+        },
+        "columns": [
+            { "data": "id" },
+            { "data": "name" },
+            { "data": "email" }
+            
+        ]
+    } );
+} );
+ </script>
+@endsection
